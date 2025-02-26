@@ -1,0 +1,11 @@
+[package]
+name = "egui-solarized"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+egui = "0.31"
+
+[workspace]
+members = ["examples/demo"]
