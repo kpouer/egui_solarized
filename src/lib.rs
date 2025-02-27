@@ -1,4 +1,4 @@
-use egui::{style, Color32, Visuals};
+use egui::{Color32, Visuals, style};
 
 #[derive(Debug)]
 pub struct Theme {
@@ -52,12 +52,19 @@ impl From<&Theme> for Visuals {
         visuals.window_fill = theme.background;
         visuals.panel_fill = theme.background;
         visuals.window_stroke.color = theme.info;
-        visuals.widgets.noninteractive= make_widget_visual(visuals.widgets.noninteractive, theme, theme.background);
-        visuals.widgets.inactive= make_widget_visual(visuals.widgets.inactive, theme, theme.background_faint);
-        visuals.widgets.hovered= make_widget_visual(visuals.widgets.hovered, theme, theme.background_highlight);
-        visuals.widgets.active= make_widget_visual(visuals.widgets.active, theme, theme.text_faint);
-        visuals.widgets.open= make_widget_visual(visuals.widgets.open, theme, theme.background_faint);
-        visuals.selection.bg_fill = theme.info.linear_multiply(if theme.dark { 0.2 } else { 0.4 });
+        visuals.widgets.noninteractive =
+            make_widget_visual(visuals.widgets.noninteractive, theme, theme.background);
+        visuals.widgets.inactive =
+            make_widget_visual(visuals.widgets.inactive, theme, theme.background_faint);
+        visuals.widgets.hovered =
+            make_widget_visual(visuals.widgets.hovered, theme, theme.background_highlight);
+        visuals.widgets.active =
+            make_widget_visual(visuals.widgets.active, theme, theme.text_faint);
+        visuals.widgets.open =
+            make_widget_visual(visuals.widgets.open, theme, theme.background_faint);
+        visuals.selection.bg_fill = theme
+            .info
+            .linear_multiply(if theme.dark { 0.2 } else { 0.4 });
         visuals.selection.stroke.color = theme.info;
 
         visuals.window_shadow.color = shadow_color;
@@ -89,7 +96,6 @@ fn make_widget_visual(
 
 static BASE03: Color32 = Color32::from_rgb(0x00, 0x2b, 0x36);
 static BASE02: Color32 = Color32::from_rgb(0x07, 0x36, 0x42);
-#[allow(dead_code)]
 static BASE01: Color32 = Color32::from_rgb(0x58, 0x6e, 0x75);
 #[allow(dead_code)]
 static BASE00: Color32 = Color32::from_rgb(0x65, 0x7b, 0x83);
@@ -135,8 +141,8 @@ impl Theme {
             background: BASE3,
             background_faint: BASE2,
             background_highlight: BASE2,
-            text: BASE0,
-            text_faint: BASE1,
+            text: BASE00,
+            text_faint: BASE01,
             info: BLUE,
             warning: ORANGE,
             error: RED,
