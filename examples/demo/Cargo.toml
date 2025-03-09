@@ -8,9 +8,8 @@ publish = false
 egui = "0.31"
 egui_extras = { version = "0.31", features = ["image"] }
 eframe = "0.31"
-egui-solarized = { path = "../.." }
+egui_solarized = { path = "../.." }
 env_logger = "0.11"
-log = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 chrono = "0.4"
 
