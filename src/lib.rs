@@ -1,3 +1,5 @@
+/// Solarized theme for [egui](egui).
+
 use egui::style::WidgetVisuals;
 use egui::{Color32, Visuals};
 

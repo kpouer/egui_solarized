@@ -8,7 +8,8 @@ There is a dark and a light theme.
 You can use them with egui by calling `ctx.set_visuals(Theme::solarized_dark().into())` or
 `ctx.set_visuals(Theme::solarized_light().into())`
 
-## Howto
+
+## Usage
 
 Add the following to your `Cargo.toml`:
 
@@ -38,7 +39,7 @@ fn main() {
 ### Showcase
 
 You can find a demo in the examples/demo folder.
-Basically I "stole" the widget gallery of the egui crate to demonstrate solarized theme on it
+Basically, I "stole" the widget gallery of the egui crate to demonstrate solarized theme on it
 
 ## Dark Mode
 ![Dark Mode](media/dark.png)
