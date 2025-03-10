@@ -1,4 +1,4 @@
-# egui-solarized
+# egui_solarized
 
 ## Description
 

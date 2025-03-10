@@ -2,7 +2,14 @@
 name = "egui_solarized"
 version = "0.1.0"
 edition = "2024"
-publish = false
+authors = ["Matthieu Casanova <chocolat.mou@gmail.com>"]
+description = "Solarized theme for egui."
+homepage = "https://github.com/kpouer/egui_solarized"
+repository = "https://github.com/kpouer/egui_solarized"
+license = "MIT"
+readme = "README.md"
+keywords = ["egui", "solarized", "theme", "gui"]
+categories = ["gui"]
 
 [dependencies]
 egui = "0.31"
