@@ -1,6 +1,23 @@
 use egui::style::WidgetVisuals;
 use egui::{Color32, Visuals};
 
+pub const BASE03: Color32 = Color32::from_rgb(0x00, 0x2b, 0x36);
+pub const BASE02: Color32 = Color32::from_rgb(0x07, 0x36, 0x42);
+pub const BASE01: Color32 = Color32::from_rgb(0x58, 0x6e, 0x75);
+pub const BASE00: Color32 = Color32::from_rgb(0x65, 0x7b, 0x83);
+pub const BASE0: Color32 = Color32::from_rgb(0x83, 0x94, 0x96);
+pub const BASE1: Color32 = Color32::from_rgb(0x93, 0xa1, 0xa1);
+pub const BASE2: Color32 = Color32::from_rgb(0xee, 0xe8, 0xd5);
+pub const BASE3: Color32 = Color32::from_rgb(0xfd, 0xf6, 0xe3);
+pub const YELLOW: Color32 = Color32::from_rgb(0xb5, 0x89, 0x00);
+pub const ORANGE: Color32 = Color32::from_rgb(0xcb, 0x4b, 0x16);
+pub const RED: Color32 = Color32::from_rgb(0xdc, 0x32, 0x2f);
+pub const MAGENTA: Color32 = Color32::from_rgb(0xd3, 0x36, 0x82);
+pub const VIOLET: Color32 = Color32::from_rgb(0x6c, 0x71, 0xc4);
+pub const BLUE: Color32 = Color32::from_rgb(0x26, 0x8b, 0xd2);
+pub const CYAN: Color32 = Color32::from_rgb(0x2a, 0xa1, 0x98);
+pub const GREEN: Color32 = Color32::from_rgb(0x85, 0x99, 0x00);
+
 #[derive(Debug)]
 pub struct Theme {
     pub dark: bool,
@@ -22,6 +39,15 @@ pub struct Theme {
 impl Default for Theme {
     fn default() -> Self {
         Self::solarized_dark()
+    }
+}
+
+impl From<egui::Theme> for Theme {
+    fn from(theme: egui::Theme) -> Self {
+        match theme {
+            egui::Theme::Dark => Theme::solarized_dark(),
+            egui::Theme::Light => Theme::solarized_light(),
+        }
     }
 }
 
@@ -80,23 +106,6 @@ fn update_widget_visual(widget_visuals: &mut WidgetVisuals, theme: &Theme, bg_fi
     widget_visuals.bg_stroke.color = theme.blue;
     widget_visuals.fg_stroke.color = theme.text;
 }
-
-pub static BASE03: Color32 = Color32::from_rgb(0x00, 0x2b, 0x36);
-pub static BASE02: Color32 = Color32::from_rgb(0x07, 0x36, 0x42);
-pub static BASE01: Color32 = Color32::from_rgb(0x58, 0x6e, 0x75);
-pub static BASE00: Color32 = Color32::from_rgb(0x65, 0x7b, 0x83);
-pub static BASE0: Color32 = Color32::from_rgb(0x83, 0x94, 0x96);
-pub static BASE1: Color32 = Color32::from_rgb(0x93, 0xa1, 0xa1);
-pub static BASE2: Color32 = Color32::from_rgb(0xee, 0xe8, 0xd5);
-pub static BASE3: Color32 = Color32::from_rgb(0xfd, 0xf6, 0xe3);
-pub static YELLOW: Color32 = Color32::from_rgb(0xb5, 0x89, 0x00);
-pub static ORANGE: Color32 = Color32::from_rgb(0xcb, 0x4b, 0x16);
-pub static RED: Color32 = Color32::from_rgb(0xdc, 0x32, 0x2f);
-pub static MAGENTA: Color32 = Color32::from_rgb(0xd3, 0x36, 0x82);
-pub static VIOLET: Color32 = Color32::from_rgb(0x6c, 0x71, 0xc4);
-pub static BLUE: Color32 = Color32::from_rgb(0x26, 0x8b, 0xd2);
-pub static CYAN: Color32 = Color32::from_rgb(0x2a, 0xa1, 0x98);
-pub static GREEN: Color32 = Color32::from_rgb(0x85, 0x99, 0x00);
 
 impl Theme {
     pub fn solarized_dark() -> Theme {
