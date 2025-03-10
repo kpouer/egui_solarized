@@ -4,10 +4,14 @@
 
 This crate is a port of [solarized](https://ethanschoonover.com/solarized) theme
 to [egui](https://github.com/emilk/egui)
-There is a dark and a light theme.
+
+The crate provides a Theme. The theme exists in dark and light. These themes contains the colors
+defined by the Solarized theme and can be converted into egui Visuals.
+Note that some colors of the theme are not used in egui but are still available in the library if
+you need them (can be useful if you do a text editor)
+
 You can use them with egui by calling `ctx.set_visuals(Theme::solarized_dark().into())` or
 `ctx.set_visuals(Theme::solarized_light().into())`
-
 
 ## Usage
 
