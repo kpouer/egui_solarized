@@ -1,7 +1,7 @@
 /// Solarized theme for [egui](egui).
-
 use egui::style::WidgetVisuals;
-use egui::{Color32, Visuals};
+use egui::{Color32, Style, Visuals};
+use std::sync::Arc;
 
 pub const BASE03: Color32 = Color32::from_rgb(0x00, 0x2b, 0x36);
 pub const BASE02: Color32 = Color32::from_rgb(0x07, 0x36, 0x42);
@@ -19,6 +19,22 @@ pub const VIOLET: Color32 = Color32::from_rgb(0x6c, 0x71, 0xc4);
 pub const BLUE: Color32 = Color32::from_rgb(0x26, 0x8b, 0xd2);
 pub const CYAN: Color32 = Color32::from_rgb(0x2a, 0xa1, 0x98);
 pub const GREEN: Color32 = Color32::from_rgb(0x85, 0x99, 0x00);
+
+/// Install the theme into the context
+pub fn install(ctx: &egui::Context) {
+    ctx.options_mut(|options| {
+        options.dark_style = Arc::new(Style {
+            visuals: Theme::solarized_dark().into(),
+            ..Default::default()
+        })
+    });
+    ctx.options_mut(|options| {
+        options.light_style = Arc::new(Style {
+            visuals: Theme::solarized_light().into(),
+            ..Default::default()
+        })
+    });
+}
 
 #[derive(Debug)]
 pub struct Theme {

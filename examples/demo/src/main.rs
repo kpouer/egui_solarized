@@ -28,7 +28,7 @@ fn main() -> eframe::Result {
         options,
         Box::new(|ctx| {
             install_image_loaders(&ctx.egui_ctx);
-            ctx.egui_ctx.set_visuals(Theme::solarized_dark().into());
+            egui_solarized::install(&ctx.egui_ctx);
             Ok(Box::new(DemoApp::default()))
         }),
     )
