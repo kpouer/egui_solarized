@@ -20,6 +20,9 @@ pub const BLUE: Color32 = Color32::from_rgb(0x26, 0x8b, 0xd2);
 pub const CYAN: Color32 = Color32::from_rgb(0x2a, 0xa1, 0x98);
 pub const GREEN: Color32 = Color32::from_rgb(0x85, 0x99, 0x00);
 
+/// List of accent colors
+pub static ACCENT_COLORS: [Color32; 8] = [YELLOW, ORANGE, RED, MAGENTA, VIOLET, BLUE, CYAN, GREEN];
+
 /// Install the theme into the context
 pub fn install(ctx: &egui::Context) {
     ctx.options_mut(|options| {
