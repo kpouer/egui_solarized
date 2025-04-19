@@ -5,13 +5,12 @@
 This crate is a port of [solarized](https://ethanschoonover.com/solarized) theme
 to [egui](https://github.com/emilk/egui)
 
-The crate provides a Theme. The theme exists in dark and light. These themes contains the colors
+The crate provides a Theme. The theme exists in dark and light. These themes contain the colors
 defined by the Solarized theme and can be converted into egui Visuals.
 Note that some colors of the theme are not used in egui but are still available in the library if
 you need them (can be useful if you do a text editor)
 
-You can use them with egui by calling `ctx.set_visuals(Theme::solarized_dark().into())` or
-`ctx.set_visuals(Theme::solarized_light().into())`
+You can use them with egui by calling `egui_solarized::install(&ctx.egui_ctx)`
 
 ## Usage
 
@@ -19,7 +18,7 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-egui_solarized = "0.1.0"
+egui_solarized = "0.2.0"
 ```
 
 Then add the following to your `main.rs`:
@@ -33,7 +32,7 @@ fn main() {
         options,
         Box::new(|ctx| {
             /// Install egui's default image loaders to open image files from the file system.
-            ctx.egui_ctx.set_visuals(Theme::solarized_dark().into());
+            egui_solarized::install(&ctx.egui_ctx);
             Ok(Box::new(DemoApp::default()))
         }),
     )
