@@ -3,6 +3,7 @@ use egui::style::WidgetVisuals;
 use egui::{Color32, Style, Visuals};
 use std::sync::Arc;
 
+
 pub const BASE03: Color32 = Color32::from_rgb(0x00, 0x2b, 0x36);
 pub const BASE02: Color32 = Color32::from_rgb(0x07, 0x36, 0x42);
 pub const BASE01: Color32 = Color32::from_rgb(0x58, 0x6e, 0x75);
@@ -29,13 +30,11 @@ pub fn install(ctx: &egui::Context) {
         options.dark_style = Arc::new(Style {
             visuals: Theme::solarized_dark().into(),
             ..Default::default()
-        })
-    });
-    ctx.options_mut(|options| {
+        });
         options.light_style = Arc::new(Style {
             visuals: Theme::solarized_light().into(),
             ..Default::default()
-        })
+        });
     });
 }
 
