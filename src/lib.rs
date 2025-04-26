@@ -106,8 +106,12 @@ impl From<&Theme> for Visuals {
             theme,
             theme.background_highlight,
         );
-        update_widget_visual(&mut visuals.widgets.active, theme, theme.text_emphasis);
-        update_widget_visual(&mut visuals.widgets.open, theme, theme.background_faint);
+        update_widget_visual(
+            &mut visuals.widgets.active,
+            theme,
+            theme.background_highlight,
+        );
+        update_widget_visual(&mut visuals.widgets.open, theme, theme.background_highlight);
         visuals.selection.bg_fill = theme
             .blue
             .linear_multiply(if theme.dark { 0.2 } else { 0.4 });
