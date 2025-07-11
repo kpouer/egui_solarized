@@ -18,7 +18,7 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-egui_solarized = "0.2.0"
+egui_solarized = "0.3.0"
 ```
 
 Then add the following to your `main.rs`:
