@@ -1,6 +1,6 @@
 [package]
 name = "egui_solarized"
-version = "0.3.0"
+version = "0.3.1"
 edition = "2024"
 authors = ["Matthieu Casanova <chocolat.mou@gmail.com>"]
 description = "Solarized theme for egui."
