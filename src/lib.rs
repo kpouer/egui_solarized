@@ -123,7 +123,7 @@ impl From<&Theme> for Visuals {
     }
 }
 
-fn update_widget_visual(widget_visuals: &mut WidgetVisuals, theme: &Theme, bg_fill: Color32) {
+const fn update_widget_visual(widget_visuals: &mut WidgetVisuals, theme: &Theme, bg_fill: Color32) {
     widget_visuals.bg_fill = bg_fill;
     widget_visuals.weak_bg_fill = bg_fill;
     widget_visuals.bg_stroke.color = theme.blue;
@@ -131,7 +131,7 @@ fn update_widget_visual(widget_visuals: &mut WidgetVisuals, theme: &Theme, bg_fi
 }
 
 impl Theme {
-    pub fn solarized_dark() -> Theme {
+    pub const fn solarized_dark() -> Theme {
         Theme {
             dark: true,
             background: BASE03,
@@ -150,7 +150,7 @@ impl Theme {
         }
     }
 
-    pub fn solarized_light() -> Theme {
+    pub const fn solarized_light() -> Theme {
         Theme {
             dark: true,
             background: BASE3,
