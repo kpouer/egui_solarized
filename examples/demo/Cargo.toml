@@ -5,13 +5,14 @@ edition = "2024"
 publish = false
 
 [dependencies]
-egui = "0.33"
-egui_extras = { version = "0.33", features = ["image"] }
-eframe = "0.33"
+egui = "0.34"
+egui_extras = { version = "0.34", features = ["image"] }
+eframe = "0.34"
 egui_solarized = { path = "../.." }
 env_logger = "0.11"
 serde = { version = "1.0", features = ["derive"] }
 chrono = "0.4"
+jiff = "0.2.23"
 
 [features]
 default = []

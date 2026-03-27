@@ -3,7 +3,7 @@
 use crate::code_example::CodeExample;
 use crate::widget_gallery::WidgetGallery;
 use eframe::{App, Frame};
-use egui::Context;
+use egui::{Context, Ui};
 use egui_extras::install_image_loaders;
 use egui_solarized::Theme;
 use std::fmt::Display;
@@ -68,10 +68,12 @@ impl Display for SolarizedTheme {
 }
 
 impl App for DemoApp {
-    fn update(&mut self, ctx: &Context, _frame: &mut Frame) {
-        WidgetGallery::default().show(ctx, &mut self.widget_gallery);
-        CodeExample::default().show(ctx, &mut self.code_example);
-        egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
+    fn logic(&mut self, _: &Context, _: &mut Frame) {}
+
+    fn ui(&mut self, ui: &mut Ui, _: &mut Frame) {
+        WidgetGallery::default().show(ui, &mut self.widget_gallery);
+        CodeExample::default().show(ui, &mut self.code_example);
+        egui::Panel::top("top_panel").show_inside(ui, |ui| {
             let current_theme = &mut self.current_theme;
             egui::ComboBox::from_label("Choose a theme")
                 .selected_text(format!("{current_theme:?}"))
@@ -80,13 +82,13 @@ impl App for DemoApp {
                         .selectable_value(current_theme, SolarizedTheme::Light, "Light")
                         .clicked()
                     {
-                        ctx.set_visuals(Theme::solarized_light().into());
+                        ui.ctx().set_visuals(Theme::solarized_light().into());
                     }
                     if ui
                         .selectable_value(current_theme, SolarizedTheme::Dark, "Dark")
                         .clicked()
                     {
-                        ctx.set_visuals(Theme::solarized_dark().into());
+                        ui.ctx().set_visuals(Theme::solarized_dark().into());
                     }
                 });
         });
@@ -130,5 +132,5 @@ pub trait Demo {
     fn name(&self) -> &'static str;
 
     /// Show windows, etc
-    fn show(&mut self, ctx: &egui::Context, open: &mut bool);
+    fn show(&mut self, ui: &mut egui::Ui, open: &mut bool);
 }
