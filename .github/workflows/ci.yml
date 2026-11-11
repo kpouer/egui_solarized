@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  schedule:
+    # Weekly run to detect new egui releases that break the crate
+    - cron: "0 6 * * 1"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  egui-versions:
+    name: egui ${{ matrix.egui }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Keep in sync with the egui range declared in Cargo.toml.
+        # "latest" resolves to the newest egui allowed by the range.
+        egui: ["0.35.0", "0.36.0", "0.37.0", "latest"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Pin egui version
+        if: matrix.egui != 'latest'
+        run: |
+          cargo update -p egui --precise ${{ matrix.egui }}
+      - name: Use latest egui in range
+        if: matrix.egui == 'latest'
+        run: cargo update -p egui
+      - name: Build
+        run: cargo build -p egui_solarized --all-targets
+      - name: Test
+        run: cargo test -p egui_solarized
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all --check
+      - run: cargo clippy -p egui_solarized --all-targets -- -D warnings
